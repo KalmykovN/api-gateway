@@ -6,13 +6,6 @@ spring:
     name: api-gateway
   cloud:
     gateway:
-      routes:
-      - id: vehicle-service-route
-        uri: lb://vehicle-service  # Use service discovery to route to 'vehicle-service'
-        predicates:
-        - Path=/vehicle-service/** # Match requests starting with /vehicle-service
-        filters:
-        - RewritePath=RewritePath=/vehicle-service/(?<suburl>.*),/vehicle-path/${suburl} # Just a direct rewrite
       discovery:
         locator:
           enabled: true
